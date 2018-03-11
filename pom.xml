@@ -1,83 +1,84 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>gon.cue</groupId>
-  <artifactId>PirateBayDownloader</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
-  <name>MagnetGenerator</name>
-  <url>http://maven.apache.org</url>
-  <properties>
-    <project.build.sourceEncoding>
-    UTF-8</project.build.sourceEncoding>
-    <bt-version>1.6</bt-version>
-  </properties>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>23.5-jre</version>
-    </dependency>
-    <dependency>
-    <groupId>com.github.atomashpolskiy</groupId>
-    <artifactId>bt-core</artifactId>
-    <version>${bt-version}</version>
-</dependency>
-<!-- for the sake of keeping the core with minimum number of 3-rd party
-     dependencies HTTP tracker support is shipped as a separate module;
-     you may omit this dependency if only UDP trackers are going to be used -->
-<dependency>
-    <groupId>com.github.atomashpolskiy</groupId>
-    <artifactId>bt-http-tracker-client</artifactId>
-    <version>${bt-version}</version>
-</dependency>
-<dependency>
-    <groupId>com.github.atomashpolskiy</groupId>
-    <artifactId>bt-dht</artifactId>
-    <version>${bt-version}</version>
-</dependency>
-  </dependencies>
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifest>
-              <mainClass>gon.cue.App</mainClass>
-            </manifest>
-          </archive>
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.7.0</version>
-        <configuration>
-          <fork>true</fork>
-          <maxmem>1024m</maxmem>
-          <meminitial>256m</meminitial>
-          <encoding>UTF-8</encoding>
-          <source>1.8</source>
-          <target>1.8</target>
-          <debug>true</debug>
-          <debuglevel>lines,vars,source</debuglevel>
-          <compilerArgs>
-            <arg>-Xlint:varargs</arg>
-          </compilerArgs>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>gon.cue</groupId>
+    <artifactId>PirateBayDownloader</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>MagnetGenerator</name>
+    <url>http://maven.apache.org</url>
+    <properties>
+        <project.build.sourceEncoding>
+            UTF-8
+        </project.build.sourceEncoding>
+        <bt-version>1.6</bt-version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>23.5-jre</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.atomashpolskiy</groupId>
+            <artifactId>bt-core</artifactId>
+            <version>${bt-version}</version>
+        </dependency>
+        <!-- for the sake of keeping the core with minimum number of 3-rd party
+             dependencies HTTP tracker support is shipped as a separate module;
+             you may omit this dependency if only UDP trackers are going to be used -->
+        <dependency>
+            <groupId>com.github.atomashpolskiy</groupId>
+            <artifactId>bt-http-tracker-client</artifactId>
+            <version>${bt-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.atomashpolskiy</groupId>
+            <artifactId>bt-dht</artifactId>
+            <version>${bt-version}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>gon.cue.App</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <fork>true</fork>
+                    <maxmem>1024m</maxmem>
+                    <meminitial>256m</meminitial>
+                    <encoding>UTF-8</encoding>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <debug>true</debug>
+                    <debuglevel>lines,vars,source</debuglevel>
+                    <compilerArgs>
+                        <arg>-Xlint:varargs</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

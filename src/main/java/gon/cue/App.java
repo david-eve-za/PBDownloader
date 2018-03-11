@@ -12,6 +12,8 @@ import com.google.common.io.BaseEncoding;
 import com.google.common.io.Files;
 import com.google.common.io.LineProcessor;
 import com.google.inject.Module;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +23,7 @@ import java.util.List;
  * Hello world!
  *
  */
-public class App {
+public class App extends Application {
     public static void main(String[] args) {
         List<String> lines = null;
         try {
@@ -99,5 +101,10 @@ public class App {
             hexChars[j * 2 + 1] = hexArray[v & 0x0F];
         }
         return new String(hexChars);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+
     }
 }
