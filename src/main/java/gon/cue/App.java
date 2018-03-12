@@ -18,29 +18,27 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 import java.util.List;
 
 /**
  * Hello world!
- *
  */
 public class App extends Application {
 
-    private static Document doc;
-
     public static void main(String[] args) {
 
-        try {
-            doc = Jsoup.connect("https://thepiratebay.org/static/dump/csv/").get();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        processMagnet();
 
-        System.out.println(doc);
+    }
 
-        System.exit(0);
-
+    private static void processMagnet() {
         List<String> lines = null;
         try {
             lines = Files.readLines(new File("/projects/torrent_dump_full.csv"), Charsets.UTF_8, new LineProcessor<List<String>>() {
@@ -101,7 +99,7 @@ public class App extends Application {
         BtClient client = Bt.client().magnet(magnetURI).storage(storage).autoLoadModules().module(dhtModule).build();
 
         client.startAsync(state -> {
-            System.out.println("Connected Peers: "+state.getConnectedPeers()+" Total Pieces: "+state.getPiecesTotal()+" Downloaded: "+state.getDownloaded());
+            System.out.println("Connected Peers: " + state.getConnectedPeers() + " Total Pieces: " + state.getPiecesTotal() + " Downloaded: " + state.getDownloaded());
             if (state.getPiecesRemaining() == 0) {
                 client.stop();
             }
