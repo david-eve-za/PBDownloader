@@ -14,8 +14,6 @@ import com.google.common.io.LineProcessor;
 import com.google.inject.Module;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 
 import java.io.File;
 import java.io.FileNotFoundException;
