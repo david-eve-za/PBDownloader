@@ -6,28 +6,25 @@ import bt.data.file.FileSystemStorage;
 import bt.dht.DHTConfig;
 import bt.dht.DHTModule;
 import bt.runtime.BtClient;
+
 import com.google.common.base.Charsets;
 import com.google.common.collect.Lists;
 import com.google.common.io.BaseEncoding;
 import com.google.common.io.Files;
 import com.google.common.io.LineProcessor;
 import com.google.inject.Module;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 import java.util.List;
 
 /**
  * Hello world!
  */
+@SuppressWarnings("restriction")
 public class App extends Application {
 
     public static void main(String[] args) {
@@ -36,6 +33,7 @@ public class App extends Application {
 
     }
 
+    @SuppressWarnings("deprecation")
     private static void processMagnet() {
         List<String> lines = null;
         try {
