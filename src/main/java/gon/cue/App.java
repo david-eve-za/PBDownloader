@@ -14,6 +14,8 @@ import com.google.common.io.LineProcessor;
 import com.google.inject.Module;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,7 +26,21 @@ import java.util.List;
  *
  */
 public class App extends Application {
+
+    private static Document doc;
+
     public static void main(String[] args) {
+
+        try {
+            doc = Jsoup.connect("https://thepiratebay.org/static/dump/csv/").get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(doc);
+
+        System.exit(0);
+
         List<String> lines = null;
         try {
             lines = Files.readLines(new File("/projects/torrent_dump_full.csv"), Charsets.UTF_8, new LineProcessor<List<String>>() {
