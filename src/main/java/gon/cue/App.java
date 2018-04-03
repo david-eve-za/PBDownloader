@@ -1,37 +1,29 @@
 package gon.cue;
 
-import bt.Bt;
-import bt.data.Storage;
-import bt.data.file.FileSystemStorage;
-import bt.dht.DHTConfig;
-import bt.dht.DHTModule;
-import bt.runtime.BtClient;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 import com.google.common.base.Charsets;
 import com.google.common.collect.Lists;
 import com.google.common.io.BaseEncoding;
 import com.google.common.io.Files;
 import com.google.common.io.LineProcessor;
-import com.google.inject.Module;
-
-import javafx.application.Application;
-import javafx.stage.Stage;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
 
 /**
  * Hello world!
  */
 @SuppressWarnings("restriction")
-public class App extends Application {
+public class App {
 
     public static void main(String[] args) {
+        
+        Operations.getOperations().createDataBase();
 
         processMagnet();
 
     }
+
 
     @SuppressWarnings("deprecation")
     private static void processMagnet() {
@@ -95,11 +87,12 @@ public class App extends Application {
         BtClient client = Bt.client().magnet(magnetURI).storage(storage).autoLoadModules().module(dhtModule).build();
 
         client.startAsync(state -> {
-            System.out.println("Connected Peers: " + state.getConnectedPeers() + " Total Pieces: " + state.getPiecesTotal() + " Downloaded: " + state.getDownloaded());
-            if (state.getPiecesRemaining() == 0) {
-                client.stop();
-            }
-        }, 1000).join();
+                              System.out.println("Connected Peers: " + state.getConnectedPeers() + " Total Pieces: "
+                                                 + state.getPiecesTotal() + " Downloaded: " + state.getDownloaded());
+                              if (state.getPiecesRemaining() == 0) {
+                                  client.stop();
+                              }
+                          }, 1000).join();
     }
 
     public static String bytesToHex(byte[] bytes) {
@@ -113,8 +106,5 @@ public class App extends Application {
         return new String(hexChars);
     }
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
 
-    }
 }
